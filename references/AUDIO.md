@@ -29,13 +29,13 @@ still shows `Skedulr`.
 clip back through speech-to-text and read the transcript:
 
 ```
-input "Skedulr"    -> transcript "Skedullr"   (wrong, one slurred word)
-input "Sked-uler"  -> transcript "Skeduler"   (correct)
+input "Skedulr"      -> transcript "Skedullr"     (wrong, one slurred word)
+input "Sked-uler"    -> transcript "Skeduler"     (correct)
 ```
 
-Homophones in the transcript (`Skeduler` vs `Skedjuler`) are the transcriber choosing a
-spelling; both represent the same sound and both are fine. What matters is that the
-name is no longer read as a single mangled token.
+Near-identical spellings in the transcript (`Skeduler` vs `Skedjuler`) are just the
+transcriber picking one; they represent the same sound and both are fine. What
+matters is that the name is no longer read as a single mangled token.
 
 ### Batching
 

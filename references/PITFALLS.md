@@ -106,5 +106,5 @@ rewriting in a real repository.
 - **A blank first frame** at `t=0` before the first animation starts. Expected.
 - **A 1px offset** between a declared overlay rect and the painted one, caused by a
   border. Measure the DOM instead of hardcoding and it stops mattering.
-- **Different transcriptions** of the same audio (`Skeduler` / `Skedjuler`). Homophones;
-  the pronunciation is identical.
+- **Different transcriptions** of the same audio (`Skeduler` / `Skedjuler`). The
+  transcriber picked a spelling; the pronunciation is identical.

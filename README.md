@@ -11,6 +11,13 @@ notes, onboarding, title stings, social cuts - one pipeline, different shapes.
 script.json ──► TTS ──► measure ──► timings.json ──► render ──► composite ──► mux ──► MP4
 ```
 
+![The bundled starter deck, rendered by the pipeline](docs/demo.gif)
+
+The clip above is `templates/deck.html` rendered straight through `scripts/render.py`
+with no narration, no API keys and no editing - exactly what a clean clone produces
+in about a minute. [Full quality MP4](https://github.com/kritikmodi/software-video-skill/releases/download/v0.1.0/demo.mp4)
+(1080p, 30fps).
+
 ## Why this exists
 
 Video is usually the one asset an AI assistant cannot iterate on. Every revision

@@ -32,10 +32,10 @@ read the UI aloud. In an explainer or launch the reverse holds - narration leads
 footage arrives as evidence.
 
 **Spell for the ear, not the eye.** TTS reads what you write. Product names that
-are compressed or invented get mangled - `Skedulr` came out as one slurred word
-until it was written `Sked-uler` in the TTS input. The on-screen spelling stays
-correct; only the input to the model changes. Verify by transcribing the result
-(see AUDIO.md).
+are compressed or invented get mangled: a name like `Skedulr` comes out as one
+slurred word until it is written `Sked-uler` in the TTS input. The on-screen
+spelling stays correct; only the input to the model changes. Verify by
+transcribing the result (see AUDIO.md).
 
 ## 2. Narration and timing
 
