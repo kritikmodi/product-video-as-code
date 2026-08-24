@@ -79,15 +79,29 @@ Rules of thumb that follow from the type:
 
 ## Quick start
 
+Setup, once: `pip install -r requirements.txt && playwright install chromium`.
+ffmpeg and ffprobe must also be on PATH.
+
+Silent first, to check the deck renders at all:
+
 ```bash
-pip install playwright && playwright install chromium   # ffmpeg must also be on PATH
-cp templates/deck.html templates/script.example.json .
-mv script.example.json script.json
+cp templates/deck.html .
+python3 scripts/render.py --preview 2 8 18   # stills
+python3 scripts/render.py                    # -> out/silent.mp4
+```
+
+Then the full pipeline once narration exists:
+
+```bash
+cp templates/script.example.json script.json
 # generate audio/vo_01.mp3 ... one per scene, then:
 python3 scripts/assemble.py                    # timings.json + out/voice.wav
 python3 scripts/render.py                      # out/silent.mp4
 python3 scripts/mux.py --final out/final.mp4   # add voice (+ music if audio/bed.mp3 exists)
 ```
+
+`assemble.py` is the only stage that needs audio; without it `render.py` uses the
+durations declared in the deck.
 
 ## Rules that keep this working
 

@@ -37,7 +37,7 @@ drift out of sync and forces a rebuild every time a line changes.
 As a Claude Skill:
 
 ```bash
-git clone https://github.com/<you>/software-video-skill.git
+git clone https://github.com/kritikmodi/software-video-skill.git
 cp -r software-video-skill ~/.claude/skills/software-video
 ```
 
@@ -48,24 +48,36 @@ dependency on Claude.
 (`pip install playwright && playwright install chromium`), and any text-to-speech
 provider.
 
-## Quick start
+## Try it in a minute
+
+No narration, no API keys, no accounts. This renders the bundled starter deck to a
+real 23s 1080p MP4:
 
 ```bash
-cp templates/deck.html templates/script.example.json .
-mv script.example.json script.json
-# generate audio/vo_01.mp3 ... one clip per scene, then:
-python3 scripts/assemble.py                    # timings.json + out/voice.wav
-python3 scripts/render.py                      # out/silent.mp4
-python3 scripts/mux.py --final out/final.mp4   # + music if audio/bed.mp3 exists
+pip install -r requirements.txt && playwright install chromium
+cp templates/deck.html .
+python3 scripts/render.py            # -> out/silent.mp4
 ```
 
-Check layout before committing to a full render:
+Stills are faster still, if you just want to see the deck:
 
 ```bash
 python3 scripts/render.py --preview 2 8 18
 ```
 
-No narration? Skip stage 1, hand-write `timings.json`, and the rest is unchanged.
+## Full pipeline, with narration
+
+```bash
+cp templates/script.example.json script.json
+# edit script.json, then generate audio/vo_01.mp3 ... one clip per scene with the
+# text-to-speech provider of your choice
+python3 scripts/assemble.py                    # timings.json + out/voice.wav
+python3 scripts/render.py                      # out/silent.mp4
+python3 scripts/mux.py --final out/final.mp4   # + music if audio/bed.mp3 exists
+```
+
+`assemble.py` is the only stage that needs audio. Without it, `render.py` falls back
+to the durations declared in the deck, so silent videos need no extra work.
 
 ## Kinds of video
 

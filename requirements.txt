@@ -1,0 +1,6 @@
+# Browser automation for the frame renderer and screen capture.
+# After installing, fetch the browser itself:  playwright install chromium
+playwright>=1.40
+
+# ffmpeg and ffprobe must also be on PATH (brew install ffmpeg / apt install ffmpeg).
+# Pillow and numpy are only needed for the optional frame QC snippets in the docs.
