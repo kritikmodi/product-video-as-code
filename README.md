@@ -41,15 +41,23 @@ drift out of sync and forces a rebuild every time a line changes.
 
 ## Install
 
-As a Claude Skill:
-
 ```bash
 git clone https://github.com/kritikmodi/software-video-skill.git
+```
+
+**Any agent.** `AGENTS.md` at the repo root is read natively by Codex, Cursor,
+Copilot, Gemini CLI, Aider, Windsurf, Zed and others, so cloning it into your
+project is enough.
+
+**Claude Code / claude.ai.** Install it as a skill so it loads on demand:
+
+```bash
 cp -r software-video-skill ~/.claude/skills/software-video
 ```
 
-Claude picks it up from `SKILL.md`. It also works standalone - the scripts have no
-dependency on Claude.
+**No agent at all.** The scripts are plain Python calling ffmpeg and Playwright.
+Nothing here imports a vendor SDK or calls a model API, so you can run the whole
+pipeline by hand.
 
 **Requirements:** Python 3.9+, `ffmpeg`/`ffprobe` on PATH, Playwright with Chromium
 (`pip install playwright && playwright install chromium`), and any text-to-speech
