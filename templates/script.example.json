@@ -1,0 +1,27 @@
+{
+  "voice": "note which voice / model you used, so re-records match",
+  "model": "e.g. eleven_multilingual_v2",
+  "kind": "explainer | launch | demo | tutorial | release-notes | onboarding | social",
+  "target": "where this cut is going - it changes how you write",
+  "notes": [
+    "Write for muted playback if this is for social: the headline carries the beat.",
+    "Spell product names phonetically for the TTS input only, then verify by transcribing."
+  ],
+  "scenes": [
+    {
+      "i": 1,
+      "slide": "Your headline here",
+      "vo": "The words that are spoken over this scene."
+    },
+    {
+      "i": 2,
+      "slide": "Three things.",
+      "vo": "First, the thing. Second, the other thing. And third, the last one."
+    },
+    {
+      "i": 3,
+      "slide": "And here is the real thing.",
+      "vo": "This scene holds on recorded product footage after the line ends."
+    }
+  ]
+}

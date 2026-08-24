@@ -1,0 +1,25 @@
+# Rendered output and intermediates
+out/
+preview/
+*.mp4
+*.wav
+
+# Generated narration and music
+audio/
+audio_*/
+
+# Screen capture working dir at the PROJECT ROOT ONLY - raw takes, stills, and
+# a LIVE BROWSER SESSION. /capture/profile/ holds real login cookies and must
+# never be committed. The leading slash matters: without it this would also
+# exclude scripts/capture/, which is source.
+/capture/
+
+# Project-local working copies of the templates
+/deck.html
+/script.json
+/timings*.json
+
+__pycache__/
+*.pyc
+.DS_Store
+.venv/
