@@ -176,6 +176,12 @@ dependency-light: plain HTML means anyone can open the deck and edit copy withou
 toolchain, which matters for brand work where exact assets and colours are
 non-negotiable.
 
+## Related
+
+The same idea applied to slides: [Deckloom](https://github.com/kritikmodi/deckloom)
+builds pitch decks, one-pagers and sales decks from a JSON content file and one
+HTML design file, rendered to PDF and PPTX.
+
 ## License
 
 MIT (c) 2026 Kritik Modi - see [LICENSE](LICENSE).
