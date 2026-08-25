@@ -188,9 +188,8 @@ MIT (c) 2026 Kritik Modi - see [LICENSE](LICENSE).
 
 <!--
 GitHub repo description (About field, set in repo settings):
-Build product videos from code instead of a video editor: demos, launches,
-tutorials, release notes, from an HTML deck, AI voiceover and real screen
-recordings, rendered to MP4 with ffmpeg. Works with Claude Code, Codex and Cursor.
+Product videos from code, not a video editor. HTML slides, AI voiceover and screen
+recordings, rendered to MP4.
 
 Suggested topics: claude-skill, claude-code, video, ffmpeg, playwright,
 text-to-speech, screen-recording, devrel, developer-marketing, video-as-code
