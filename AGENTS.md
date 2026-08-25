@@ -42,6 +42,17 @@ python3 scripts/mux.py --final out/final.mp4   # adds voice, and music if audio/
 
 Every script supports `--help`.
 
+## Match the product's brand from its code
+
+```bash
+python3 scripts/detect_brand.py ../their-product --css
+```
+
+Reads tokens, tailwind, CSS variables, JS theme objects and the manifest; also
+reports fonts, icon library and logos. Skips build output and rejects colours
+that do not cohere, printing what it rejected. Paste the `:root` block into
+`deck.html`. Show the user the result before rendering.
+
 ## Where things live
 
 | Path | Purpose |

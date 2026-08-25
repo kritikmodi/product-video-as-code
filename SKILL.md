@@ -131,6 +131,28 @@ Never run two renders against the same parts directory.
 parameter (`deck.html?cut=short`) so a long demo and a 40-second social cut cannot
 drift apart. See `references/PIPELINE.md`.
 
+## Match the product's brand from its code
+
+If the product has a codebase, read the brand out of it rather than asking for
+hex codes:
+
+```bash
+python3 scripts/detect_brand.py ../their-product --css
+```
+
+It reads design token files, tailwind configs, CSS custom properties, SCSS and
+Less variables, JS/TS theme objects and the web manifest, and reports the fonts,
+icon library and logo files it found. Paste the `:root` block it prints into
+`deck.html`.
+
+Build output is skipped, since a `dist/` folder is full of vendored
+component-library CSS that is not the brand. The palette is also checked for
+coherence rather than trusted from name matches alone: a repo defining
+`--surface` for its light theme and `--bg` for its dark one would otherwise give
+a white card on a black frame. Rejections are printed, never applied silently.
+
+Show the user what was detected and what was rejected before rendering.
+
 ## Design guidance
 
 The deck is HTML/CSS, so the design is entirely yours. Two things are worth knowing:

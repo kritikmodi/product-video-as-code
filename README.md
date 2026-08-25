@@ -123,6 +123,7 @@ just made. `SKILL.md` has the full guidance.
 | `scripts/render.py` | deterministic, resumable frame renderer |
 | `scripts/composite.py` | overlay screen recordings into a measured DOM rect |
 | `scripts/mux.py` | ducked music bed + broadcast-level master |
+| `scripts/detect_brand.py` | read colours, fonts, icons and logos out of a codebase |
 | `scripts/capture/` | log in by hand, then record the product with a synthetic cursor |
 | `templates/deck.html` | starter deck with the animation engine |
 | `references/` | pipeline, audio, screen capture, and pitfalls |
@@ -148,6 +149,11 @@ injected. Record at the exact pixel size of the frame it will occupy - scaling a
 **Audio that is actually audible.** Normalise the music bed to a loudness target
 before ducking. A fixed dB attenuation on a quiet generated bed produces a track
 that is present in the file and inaudible in the room.
+
+**Brand detected, not guessed.** `detect_brand.py` reads the palette, fonts,
+icon library and logos out of the product's own codebase, skips build output, and
+rejects colours that do not cohere rather than silently producing a white card on
+a black frame.
 
 **Verify, don't assume.** Detect blank frames by ink coverage, not variance. Confirm
 pronunciation by transcribing the generated audio back. Measure levels on the file
