@@ -1,11 +1,11 @@
 ---
-name: software-video
-description: Produce software videos end to end - product demos, feature launches, explainers, walkthroughs, tutorials, release notes, onboarding and social cuts - from a script, an AI voiceover, animated HTML slides and real screen recordings, rendered deterministically to MP4 with ffmpeg. Use when asked to create, edit, re-cut, re-voice, shorten or re-brand any video about software.
+name: product-video
+description: Produce product videos end to end - product demos, feature launches, explainers, walkthroughs, tutorials, release notes, onboarding and social cuts - from a script, an AI voiceover, animated HTML slides and real screen recordings, rendered deterministically to MP4 with ffmpeg. Use when asked to create, edit, re-cut, re-voice, shorten or re-brand any video about software.
 ---
 
-# Software video
+# Product video as code
 
-Build videos about software as **code**: an HTML deck driven by a deterministic
+Build product videos as **code**: an HTML deck driven by a deterministic
 timeline, an AI voiceover, real screen recordings of the product, and an ffmpeg
 audio master. Everything is reproducible, diffable and re-renderable, so revisions
 cost minutes instead of a rebuild.

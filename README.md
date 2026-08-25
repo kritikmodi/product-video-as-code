@@ -1,8 +1,8 @@
 # Product video as Code
 
-Make videos about software as code: an animated HTML deck, an AI voiceover, real
-screen recordings, and a mastered audio mix, rendered deterministically to MP4
-with ffmpeg.
+Build product videos from code instead of a video editor: an animated HTML deck,
+an AI voiceover, real screen recordings, and a mastered audio mix, rendered
+deterministically to MP4 with ffmpeg.
 
 Product demos, feature launches, explainers, walkthroughs, tutorials, release
 notes, onboarding, title stings, social cuts - one pipeline, different shapes.
@@ -15,7 +15,7 @@ script.json ──► TTS ──► measure ──► timings.json ──► ren
 
 The clip above is `templates/deck.html` rendered straight through `scripts/render.py`
 with no narration, no API keys and no editing - exactly what a clean clone produces
-in about a minute. [Full quality MP4](https://github.com/kritikmodi/software-video-skill/releases/download/v0.1.0/demo.mp4)
+in about a minute. [Full quality MP4](https://github.com/kritikmodi/product-video-as-code/releases/download/v0.1.0/demo.mp4)
 (1080p, 30fps).
 
 ## Why this exists
@@ -42,7 +42,7 @@ drift out of sync and forces a rebuild every time a line changes.
 ## Install
 
 ```bash
-git clone https://github.com/kritikmodi/software-video-skill.git
+git clone https://github.com/kritikmodi/product-video-as-code.git
 ```
 
 **Any agent.** `AGENTS.md` at the repo root is read natively by Codex, Cursor,
@@ -52,7 +52,7 @@ project is enough.
 **Claude Code / claude.ai.** Install it as a skill so it loads on demand:
 
 ```bash
-cp -r software-video-skill ~/.claude/skills/software-video
+cp -r product-video-as-code ~/.claude/skills/product-video
 ```
 
 **No agent at all.** The scripts are plain Python calling ffmpeg and Playwright.
@@ -176,9 +176,9 @@ MIT (c) 2026 Kritik Modi - see [LICENSE](LICENSE).
 
 <!--
 GitHub repo description (About field, set in repo settings):
-A Claude Skill for making software videos as code - demos, launches, tutorials,
-release notes - from an HTML deck, AI voiceover and real screen recordings,
-rendered to MP4 with ffmpeg.
+Build product videos from code instead of a video editor: demos, launches,
+tutorials, release notes, from an HTML deck, AI voiceover and real screen
+recordings, rendered to MP4 with ffmpeg. Works with Claude Code, Codex and Cursor.
 
 Suggested topics: claude-skill, claude-code, video, ffmpeg, playwright,
 text-to-speech, screen-recording, devrel, developer-marketing, video-as-code
