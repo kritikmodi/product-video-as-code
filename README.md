@@ -1,4 +1,4 @@
-# Product video - a Claude Skill
+# Product video as Code
 
 Make videos about software as code: an animated HTML deck, an AI voiceover, real
 screen recordings, and a mastered audio mix, rendered deterministically to MP4
