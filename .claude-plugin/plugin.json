@@ -1,0 +1,14 @@
+{
+  "name": "product-video-as-code",
+  "displayName": "Product video as code",
+  "version": "0.1.0",
+  "description": "Build product videos from your IDE: an HTML deck, an AI voiceover and real screen recordings, rendered to MP4 with ffmpeg.",
+  "author": {
+    "name": "Kritik Modi",
+    "url": "https://github.com/kritikmodi"
+  },
+  "homepage": "https://github.com/kritikmodi/product-video-as-code",
+  "repository": "https://github.com/kritikmodi/product-video-as-code",
+  "license": "MIT",
+  "keywords": ["video", "product-demo", "explainer", "ffmpeg", "voiceover", "video-as-code"]
+}

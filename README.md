@@ -51,7 +51,21 @@ git clone https://github.com/kritikmodi/product-video-as-code.git
 Copilot, Gemini CLI, Aider, Windsurf, Zed and others, so cloning it into your
 project is enough.
 
-**Claude Code / claude.ai.** Install it as a skill so it loads on demand:
+**Claude Code.** Install it as a plugin, from inside a session:
+
+```
+/plugin install product-video-as-code --marketplace kritikmodi/product-video-as-code
+```
+
+Or from your shell:
+
+```bash
+claude plugin marketplace add kritikmodi/product-video-as-code
+claude plugin install product-video-as-code@product-video-as-code
+```
+
+Then run it from your own project: outputs land there, not in the plugin.
+Without the plugin system, copy it in as a skill instead:
 
 ```bash
 cp -r product-video-as-code ~/.claude/skills/product-video

@@ -58,6 +58,7 @@ that do not cohere, printing what it rejected. Paste the `:root` block into
 | Path | Purpose |
 |---|---|
 | `SKILL.md` | full brief: pipeline, kinds of video, working rules |
+| `.claude-plugin/` | plugin and marketplace manifests; raise `version` in `plugin.json` on every release, or installed copies never update |
 | `references/PIPELINE.md` | stage-by-stage walkthrough, multi-cut technique |
 | `references/AUDIO.md` | voice settings, pronunciation, music levels |
 | `references/SCREEN-CAPTURE.md` | recording product footage, compositing |

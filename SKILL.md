@@ -31,6 +31,24 @@ script.json ──► TTS ──► measure ──► timings.json ──► ren
 For a video with no narration (a title sting, a silent loop, a muted social clip),
 skip stage 1 and write `timings.json` by hand. Everything downstream is unchanged.
 
+## Where the files are
+
+Work in the user's project, not in this folder. `scripts/`, `templates/`, `references/` and `requirements.txt` sit beside this file,
+in `${CLAUDE_SKILL_DIR}`; if that shows up unexpanded, it means the folder that
+holds this SKILL.md. When that folder is not the working directory, as when this
+is installed as a plugin or a skill, put it in front of the paths in the
+commands below:
+
+```bash
+pip install -r ${CLAUDE_SKILL_DIR}/requirements.txt && playwright install chromium
+cp ${CLAUDE_SKILL_DIR}/templates/deck.html .
+python3 ${CLAUDE_SKILL_DIR}/scripts/render.py          # -> ./out/silent.mp4
+```
+
+The scripts read and write relative to the directory they are run from, so
+`deck.html`, `script.json`, `timings.json`, `audio/`, `capture/` and `out/` stay in the project. Never write into the skill folder: a plugin
+update replaces it.
+
 ## Pipeline
 
 | Stage | Script | Produces |

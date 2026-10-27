@@ -1,0 +1,15 @@
+{
+  "name": "product-video-as-code",
+  "description": "Build product videos from your IDE: an HTML deck, an AI voiceover and real screen recordings, rendered to MP4 with ffmpeg.",
+  "owner": {
+    "name": "Kritik Modi",
+    "url": "https://github.com/kritikmodi"
+  },
+  "plugins": [
+    {
+      "name": "product-video-as-code",
+      "source": "./",
+      "description": "Build product videos from your IDE: an HTML deck, an AI voiceover and real screen recordings, rendered to MP4 with ffmpeg."
+    }
+  ]
+}
