@@ -1,5 +1,7 @@
 # Product video as Code
 
+[![skills.sh](https://skills.sh/b/kritikmodi/product-video-as-code)](https://skills.sh/kritikmodi/product-video-as-code)
+
 Build product videos from code instead of a video editor: an animated HTML deck,
 an AI voiceover, real screen recordings, and a mastered audio mix, rendered
 deterministically to MP4 with ffmpeg.
