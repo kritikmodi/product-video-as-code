@@ -16,9 +16,11 @@ where `at` is the absolute time the footage should start.
 import argparse, json, pathlib, shutil, subprocess, sys
 from playwright.sync_api import sync_playwright
 
-HERE = pathlib.Path(__file__).resolve().parent.parent
-OUT = HERE / "out"
-CLIPS = HERE / "capture" / "clips"
+# Working files live where you run from, not beside the script, so the
+# tool also works when installed as a skill or plugin.
+WORK = pathlib.Path.cwd()
+OUT = WORK / "out"
+CLIPS = WORK / "capture" / "clips"
 XFADE = 0.5    # crossfade between clips within one sequence
 EDGE = 0.35    # fade from / to the black screen
 
@@ -60,11 +62,11 @@ def build_sequence(name, clips, clip_len):
 
 def measure(deck, cut, timings_file):
     """Read overlay times and the true painted rect out of the live DOM."""
-    timings = json.load(open(HERE / timings_file))["durations"]
+    timings = json.load(open(WORK / timings_file))["durations"]
     with sync_playwright() as p:
         b = p.chromium.launch()
         pg = b.new_page(viewport={"width": 1920, "height": 1080})
-        pg.goto((HERE / deck).as_uri() + (f"?cut={cut}" if cut else ""))
+        pg.goto((WORK / deck).as_uri() + (f"?cut={cut}" if cut else ""))
         pg.wait_for_function("() => window.__total !== undefined")
         pg.evaluate("d => window.__retime(d)", timings)
         overlays = pg.evaluate("window.__overlays") or []

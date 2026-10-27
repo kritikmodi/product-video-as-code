@@ -20,9 +20,11 @@ Define clips in a tours.py next to this file, or edit CLIPSET below.
 import pathlib, shutil, subprocess, sys, time
 from playwright.sync_api import sync_playwright
 
-HERE = pathlib.Path(__file__).resolve().parent.parent.parent / "capture"
-RAW = HERE / "raw"; RAW.mkdir(parents=True, exist_ok=True)
-CLIPS = HERE / "clips"; CLIPS.mkdir(parents=True, exist_ok=True)
+# Working files live where you run from, not beside the script, so the
+# tool also works when installed as a skill or plugin.
+WORK = pathlib.Path.cwd() / "capture"
+RAW = WORK / "raw"; RAW.mkdir(parents=True, exist_ok=True)
+CLIPS = WORK / "clips"; CLIPS.mkdir(parents=True, exist_ok=True)
 
 VW, VH = 1440, 810          # must match the frame in the deck, 1:1
 BASE = "https://app.example.com"   # <- point at your own app
@@ -122,7 +124,7 @@ def record(name, body):
 
     with sync_playwright() as p:
         ctx = p.chromium.launch_persistent_context(
-            user_data_dir=str(HERE / "profile"), headless=True,
+            user_data_dir=str(WORK / "profile"), headless=True,
             viewport={"width": VW, "height": VH}, device_scale_factor=1,
             record_video_dir=str(outdir),
             record_video_size={"width": VW, "height": VH},

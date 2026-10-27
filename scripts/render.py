@@ -15,7 +15,9 @@ chunk rather than the whole pass; re-running resumes from the last completed par
 import sys, os, json, time, argparse, pathlib, subprocess
 from playwright.sync_api import sync_playwright, Error as PWError
 
-HERE = pathlib.Path(__file__).resolve().parent.parent
+# Working files live where you run from, not beside the script, so the
+# tool also works when installed as a skill or plugin.
+WORK = pathlib.Path.cwd()
 CHUNK = 600            # frames per resumable part
 SHOT_TIMEOUT = 120_000
 
@@ -47,17 +49,17 @@ def main():
     args = ap.parse_args()
 
     override = None
-    tpath = HERE / args.timings
+    tpath = WORK / args.timings
     if tpath.exists():
         override = json.load(open(tpath)).get("durations")
 
-    parts_dir = HERE / "out" / ("parts" + (args.parts or ""))
+    parts_dir = WORK / "out" / ("parts" + (args.parts or ""))
     parts_dir.mkdir(parents=True, exist_ok=True)
     if args.fresh:
         for f in parts_dir.glob("part_*.mp4"):
             f.unlink()
 
-    deck_url = (HERE / args.deck).as_uri() + (f"?cut={args.cut}" if args.cut else "")
+    deck_url = (WORK / args.deck).as_uri() + (f"?cut={args.cut}" if args.cut else "")
 
     with sync_playwright() as p:
         b = p.chromium.launch(args=["--force-color-profile=srgb", "--disable-lcd-text",
@@ -83,7 +85,7 @@ def main():
         print(f"total = {total:.2f}s", file=sys.stderr)
 
         if args.preview:
-            out = HERE / args.out
+            out = WORK / args.out
             out.mkdir(parents=True, exist_ok=True)
             for i, t in enumerate(args.preview):
                 pg.evaluate("t => window.__seek(t)", t)
@@ -122,12 +124,12 @@ def main():
                   f"  eta {eta/60:.1f}m", file=sys.stderr, flush=True)
         b.close()
 
-    lst = HERE / "out" / ("parts" + (args.parts or "") + ".txt")
+    lst = WORK / "out" / ("parts" + (args.parts or "") + ".txt")
     lst.write_text("".join(f"file '{parts_dir / f'part_{c:03d}.mp4'}'\n"
                            for c in range(nchunks)))
     subprocess.run(["ffmpeg", "-y", "-v", "error", "-f", "concat", "-safe", "0",
                     "-i", str(lst), "-c", "copy", "-movflags", "+faststart",
-                    str(HERE / args.video)], check=True)
+                    str(WORK / args.video)], check=True)
     print(f"wrote {args.video} ({n} frames)", file=sys.stderr)
 
 

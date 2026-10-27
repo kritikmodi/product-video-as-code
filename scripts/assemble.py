@@ -11,7 +11,9 @@ Writes timings.json (consumed by render.py and composite.py) and out/voice.wav.
 """
 import argparse, json, pathlib, subprocess, sys
 
-HERE = pathlib.Path(__file__).resolve().parent.parent
+# Working files live where you run from, not beside the script, so the
+# tool also works when installed as a skill or plugin.
+WORK = pathlib.Path.cwd()
 
 # Defaults. Every one is overridable per project from the command line.
 LEAD = 0.38       # silence before narration starts inside a scene
@@ -51,12 +53,12 @@ def main():
                     help="delivery loudness for the voice track")
     a = ap.parse_args()
 
-    out_dir = HERE / "out"
+    out_dir = WORK / "out"
     out_dir.mkdir(exist_ok=True)
     mins, extras = parse_map(a.min, MIN), parse_map(a.extra, EXTRA)
-    aud = HERE / a.audio
+    aud = WORK / a.audio
 
-    scenes = json.load(open(HERE / a.script))["scenes"]
+    scenes = json.load(open(WORK / a.script))["scenes"]
     n = len(scenes)
     files = [aud / f"vo_{i:02d}.mp3" for i in range(1, n + 1)]
     missing = [f.name for f in files if not f.exists()]
@@ -77,7 +79,7 @@ def main():
             f"[{i}:a]adelay={int(a.lead*1000)}|{int(a.lead*1000)},"
             f"apad=pad_dur={pad_end:.3f},atrim=0:{d:.3f},aresample=48000[a{i}]")
 
-    json.dump({"durations": durs}, open(HERE / a.timings, "w"), indent=1)
+    json.dump({"durations": durs}, open(WORK / a.timings, "w"), indent=1)
     for i, (s, d, v) in enumerate(zip(scenes, durs, vos), start=1):
         label = str(s.get("slide", ""))[:44]
         print(f"  {i:>2}. {d:6.2f}s  (vo {v:5.2f}s)  {label}")

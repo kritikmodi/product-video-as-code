@@ -13,8 +13,10 @@ gitignored, and it must stay that way.
 import pathlib, sys, time
 from playwright.sync_api import sync_playwright
 
-HERE = pathlib.Path(__file__).resolve().parent.parent.parent / "capture"
-PROFILE = HERE / "profile"
+# Working files live where you run from, not beside the script, so the
+# tool also works when installed as a skill or plugin.
+WORK = pathlib.Path.cwd() / "capture"
+PROFILE = WORK / "profile"
 WAIT_MIN = 10
 
 
@@ -46,7 +48,7 @@ def main():
                 if "login" not in pg.url.lower() and "signin" not in pg.url.lower():
                     time.sleep(3)
                     if "login" not in pg.url.lower():
-                        (HERE / "logged_in.marker").write_text(pg.url)
+                        (WORK / "logged_in.marker").write_text(pg.url)
                         print(f"  Logged in - now at {pg.url}")
                         time.sleep(2)
                         ctx.close()

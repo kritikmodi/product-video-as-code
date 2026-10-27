@@ -14,14 +14,16 @@ Chain:
 """
 import argparse, pathlib, subprocess
 
-HERE = pathlib.Path(__file__).resolve().parent.parent
-OUT = HERE / "out"
+# Working files live where you run from, not beside the script, so the
+# tool also works when installed as a skill or plugin.
+WORK = pathlib.Path.cwd()
+OUT = WORK / "out"
 
 ap = argparse.ArgumentParser(description=__doc__,
                              formatter_class=argparse.RawDescriptionHelpFormatter)
 ap.add_argument("--video", default=str(OUT / "silent.mp4"))
 ap.add_argument("--voice", default=str(OUT / "voice.wav"))
-ap.add_argument("--music", default=str(HERE / "audio" / "bed.mp3"),
+ap.add_argument("--music", default=str(WORK / "audio" / "bed.mp3"),
                 help="optional; skipped entirely if the file is absent")
 ap.add_argument("--music-lufs", type=float, default=-23.0,
                 help="bed loudness before ducking. Voice is -16 LUFS, so -23 leaves "
