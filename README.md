@@ -76,8 +76,7 @@ Nothing here imports a vendor SDK or calls a model API, so you can run the whole
 pipeline by hand.
 
 **Requirements:** Python 3.9+, `ffmpeg`/`ffprobe` on PATH, Playwright with Chromium
-(`pip install playwright && playwright install chromium`), and any text-to-speech
-provider.
+(installed below), and any text-to-speech provider.
 
 ## Try it in a minute
 
@@ -85,10 +84,16 @@ No narration, no API keys, no accounts. This renders the bundled starter deck to
 real 23s 1080p MP4:
 
 ```bash
-pip install -r requirements.txt && playwright install chromium
+pip install -r requirements.txt
+playwright install chromium
 cp templates/deck.html .
 python3 scripts/render.py            # -> out/silent.mp4
 ```
+
+What that downloads: `pip` installs Playwright from PyPI, and `playwright install
+chromium` fetches the headless Chromium build it drives. Rendering makes no
+network calls. Screen capture only visits the app you point it at, and narration
+goes to whichever text-to-speech provider you choose.
 
 Stills are faster still, if you just want to see the deck:
 
